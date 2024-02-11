@@ -7,18 +7,20 @@
 let choices = ["Rock", "Paper", "Scissors"];
 
 // gets player input
-function playerSelection() {
-  prompt("What will you choose?");
-  if (playerSelection === "Rock") {
-    return "You chose Rock";
-  } else if (playerSelection === "Paper") {
+function userInput() {
+  let userAnswer = prompt("Choose Rock, Paper, or Scissors");
+  if (userAnswer == "Rock") {
+    return "You chose Rock.";
+  } else if (userAnswer == "Paper") {
     return "You chose Paper.";
-  } else if (playerSelection === "Scissors") {
-    return "You chose Scissors.";
-  } else return "Please type rock, paper, or scissors!";
+  } else if (userAnswer == "Scissors") {
+    return "You chose Scissors";
+  } else return "Please input Rock, Paper, or Scissors only!";
 }
-// get player input
-// set the player input to show as all lowercase except for the first letter (which should always be zero)
+userInput();
+// get player input via a prompt DONE
+// set the player input to show as all lowercase
+// except for the first letter (which should always be zero)
 // console.log it out
 
 // computer choices
