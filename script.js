@@ -8,19 +8,19 @@ let choices = ["Rock", "Paper", "Scissors"];
 
 // gets player input
 function userInput() {
-  let userAnswer = prompt("Choose Rock, Paper, or Scissors");
-  if (userAnswer == "Rock") {
+  let userAnswer = prompt("Choose Rock, Paper, or Scissors").toLowerCase();
+  if (userAnswer === "rock") {
     return "You chose Rock.";
-  } else if (userAnswer == "Paper") {
+  } else if (userAnswer === "paper") {
     return "You chose Paper.";
-  } else if (userAnswer == "Scissors") {
+  } else if (userAnswer === "scissors") {
     return "You chose Scissors";
   } else return "Please input Rock, Paper, or Scissors only!";
 }
 userInput();
 // get player input via a prompt DONE
-// set the player input to show as all lowercase
-// except for the first letter (which should always be zero)
+// just realized ive been trying to set the user's input to show as caps but
+// i really need to make it so that it will allow their answer even if its mixed cases
 // console.log it out
 
 // computer choices
