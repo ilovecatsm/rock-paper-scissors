@@ -17,22 +17,38 @@ function userInput() {
     return "You chose Scissors";
   } else return "Please input Rock, Paper, or Scissors only!";
 }
-userInput();
-// get player input via a prompt DONE
-// just realized ive been trying to set the user's input to show as caps but
-// i really need to make it so that it will allow their answer even if its mixed cases
-// console.log it out
-
 // computer choices
 function getComputerChoice() {
   let computerChoice = Math.floor(Math.random() * choices.length);
   if (computerChoice === 1) {
     return "The computer chose Rock.";
   } else if (computerChoice === 2) {
-    return "The computer chose Paper";
-  } else return "The computer chose Scissors";
+    return "The computer chose Paper.";
+  } else return "The computer chose Scissors.";
 }
-// for the random selection, I could try to make an if statement?
-// if the computer picks 1, then choose rock
-// else if the computer picks 2, then choose paper
-// else choose scissors (because if it aint one or two, then it must be three)
+
+// this sect will be for the game rounds
+// i want to have the user prompt show first, then show the computer's answer
+// after that i want to have some sort of if statement
+// if both statements are equal then its a tie
+// rock wins over scissors
+// paper wins over rock
+// scissors win over paper
+function singleRound(playerSelection, computerSelection) {
+  console.log(userInput());
+  console.log(getComputerChoice());
+  if (playerSelection === computerSelection) {
+    return "It's a tie!";
+  } else if (playerSelection > computerSelection) {
+    return "You win!";
+  } else return "You lose!";
+}
+const playerSelection = userInput;
+const computerSelection = getComputerChoice();
+console.log(singleRound());
+
+// function gameRound() {
+//   console.log(userInput());
+//   console.log(getComputerChoice());
+// }
+// gameRound();
