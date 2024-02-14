@@ -37,18 +37,20 @@ function getComputerChoice() {
 function singleRound(playerSelection, computerSelection) {
   console.log(userInput());
   console.log(getComputerChoice());
-  if (playerSelection === computerSelection) {
-    return "It's a tie!";
-  } else if (playerSelection > computerSelection) {
-    return "You win!";
-  } else return "You lose!";
+  if (playerSelection === "Rock" && computerSelection === "Paper") {
+    return "You lose! Rock beats Paper";
+  } else if (playerSelection === "Scissors" && computerSelection === "Paper") {
+    return "You win! Scissors beats Paper";
+  } else return "It's a tie!";
 }
-const playerSelection = userInput;
+const playerSelection = userInput();
 const computerSelection = getComputerChoice();
-console.log(singleRound());
 
-// function gameRound() {
-//   console.log(userInput());
-//   console.log(getComputerChoice());
-// }
-// gameRound();
+function gameRound() {
+  console.log(singleRound(playerSelection, computerSelection));
+}
+gameRound();
+gameRound();
+gameRound();
+gameRound();
+gameRound();
