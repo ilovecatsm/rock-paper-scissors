@@ -1,56 +1,69 @@
-// Create the variables for the rock, paper, scissors done
-// make the function (this function will be for letting the computer pick what it wants) done
-// let the user choose what they want to pick
-// the computer randomly chooses what it'll pick based of the variables from earlier
-// win or lose scenario output
-
-let choices = ["Rock", "Paper", "Scissors"];
-
-// gets player input
+const choices = ["Rock", "Paper", "Scissors"];
+const playerSelection = userInput();
+const computerSelection = getComputerChoice();
+// gets player input and checks it
 function userInput() {
-  let userAnswer = prompt("Choose Rock, Paper, or Scissors").toLowerCase();
-  if (userAnswer === "rock") {
-    return "You chose Rock.";
-  } else if (userAnswer === "paper") {
-    return "You chose Paper.";
-  } else if (userAnswer === "scissors") {
-    return "You chose Scissors";
-  } else return "Please input Rock, Paper, or Scissors only!";
+  let playerInput = prompt("Choose Rock, Paper, or Scissors").toLowerCase();
+  if (playerInput === "rock") {
+    return "Rock";
+  } else if (playerInput === "paper") {
+    return "Paper";
+  } else if (playerInput === "scissors") {
+    return "Scissors";
+  } else "Please only type Rock, Paper, or Scissors!";
+  return playerInput;
+}
+function checkPlayerChoice(playerChoice) {
+  if (playerChoice === "rock") {
+    return "You selected Rock";
+  } else if (playerChoice === "paper") {
+    return "You selected Paper";
+  } else return "You selected Scissors";
 }
 // computer choices
 function getComputerChoice() {
-  let computerChoice = Math.floor(Math.random() * choices.length);
+  const computerChoice = Math.floor(Math.random() * choices.length);
   if (computerChoice === 1) {
-    return "The computer chose Rock.";
+    return "Rock";
   } else if (computerChoice === 2) {
-    return "The computer chose Paper.";
-  } else return "The computer chose Scissors.";
+    return "Paper";
+  } else return "Scissors";
 }
+function checkComputerChoice(computerChoice) {
+  if (computerChoice === 1) {
+    return "The computer selected Rock";
+  } else if (computerChoice === 2) {
+    return "The computer selected Paper";
+  } else return "The computer selected Scissors";
+}
+// checks who wins the game
+function checkWinner(playerChoice, computerChoice) {
+  if (playerChoice === computerChoice) {
+    return "Tie";
+  } else if (
+    (playerChoice === "Paper" && computerChoice === "Rock") ||
+    (playerChoice === "Scissors" && computerChoice === "Paper") ||
+    (playerChoice === "Rock" && computerChoice === "Scissors")
+  )
+    return "Player";
+  else {
+    return "Computer";
+  }
+}
+// initializes the game
+function playRound(playerSelection, computerSelection) {
+  // console.log(userInput());
+  // console.log(getComputerChoice());
 
-// this sect will be for the game rounds
-// i want to have the user prompt show first, then show the computer's answer
-// after that i want to have some sort of if statement
-// if both statements are equal then its a tie
-// rock wins over scissors
-// paper wins over rock
-// scissors win over paper
-function singleRound(playerSelection, computerSelection) {
-  console.log(userInput());
-  console.log(getComputerChoice());
-  if (playerSelection === "Rock" && computerSelection === "Paper") {
-    return "You lose! Rock beats Paper";
-  } else if (playerSelection === "Scissors" && computerSelection === "Paper") {
-    return "You win! Scissors beats Paper";
-  } else return "It's a tie!";
+  const winner = checkWinner(playerSelection, computerSelection);
+  if (winner == "Tie") {
+    return "It's a tie!";
+  } else if (winner == "Player") {
+    return `You win! ${playerSelection} beats ${computerSelection}`;
+  } else {
+    return `You lose! ${computerSelection} beats ${playerSelection}`;
+  }
 }
-const playerSelection = userInput();
-const computerSelection = getComputerChoice();
-
-function gameRound() {
-  console.log(singleRound(playerSelection, computerSelection));
-}
-gameRound();
-gameRound();
-gameRound();
-gameRound();
-gameRound();
+console.log(checkPlayerChoice());
+console.log(checkComputerChoice());
+console.log(playRound(playerSelection, computerSelection));
