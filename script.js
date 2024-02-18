@@ -50,12 +50,25 @@ function validatePlayerInput(choice) {
 }
 // initializes the game in general (including the score)
 function playGame() {
+  let scorePlayer = 0;
+  let scoreComputer = 0;
   console.log("Game Starting");
   for (let i = 0; i < 5; i++) {
     const playerSelection = playerInput();
     const computerSelection = getComputerChoice();
     console.log(playRound(playerSelection, computerSelection));
+    console.log("-----------");
+  }
+  if (checkWinner(playerSelection, computerSelection) === "Player") {
+    scorePlayer++;
+  } else if (checkWinner(playerSelection, computerSelection) === "Computer") {
+    scoreComputer++;
   }
   console.log("Play again?");
+  if (scorePlayer > scoreComputer) {
+    console.log("You won this game!");
+  } else if (scorePlayer < scoreComputer) {
+    console.log("The computer won this game!");
+  } else console.log("The game was a tie!");
 }
 console.log(playGame());
