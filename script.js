@@ -1,4 +1,4 @@
-const choices = ["Rock", "Paper", "Scissors"];
+const choices = ["rock", "paper", "scissors"];
 const playerSelection = playerInput();
 const computerSelection = getComputerChoice();
 
@@ -30,7 +30,23 @@ function playRound(playerSelection, computerSelection) {
 }
 // gets player input and checks it
 function playerInput() {
-  
+  let input = prompt("Choose Rock, Paper, or Scissors");
+  while (input == null) {
+    input = prompt("Choose Rock, Paper, or Scissors");
+  }
+  input = input.toLowerCase();
+  let check = validatePlayerInput(input);
+  if (check == true) {
+    return input;
+  }
+}
+// checks to make sure that the input is from the choices array
+function validatePlayerInput(choice) {
+  if (choices.includes(choice)) {
+    return true;
+  } else {
+    return false;
+  }
 }
 // initializes the game in general (including the score)
 function playGame() {
